@@ -1,0 +1,39 @@
+$(document).ready(function() {
+    // Function to fetch government schemes
+    function fetchGovernmentSchemes() {
+        $.ajax({
+            url: 'path/to/your/government-schemes.json', // Replace with actual API endpoint
+            method: 'GET',
+            success: function(data) {
+                $('#schemes').empty();
+                data.schemes.forEach(scheme => {
+                    $('#schemes').append(`<li>${scheme.name} - ${scheme.description}</li>`);
+                });
+            },
+            error: function(error) {
+                console.error('Error fetching schemes:', error);
+            }
+        });
+    }
+
+    // Function to fetch disaster management updates
+    function fetchDisasterManagement() {
+        $.ajax({
+            url: 'path/to/your/disaster-updates.json', // Replace with actual API endpoint
+            method: 'GET',
+            success: function(data) {
+                $('#disasterUpdates').empty();
+                data.updates.forEach(update => {
+                    $('#disasterUpdates').append(`<li>${update.date}: ${update.info}</li>`);
+                });
+            },
+            error: function(error) {
+                console.error('Error fetching disaster updates:', error);
+            }
+        });
+    }
+
+    // Fetch data on page load
+    fetchGovernmentSchemes();
+    fetchDisasterManagement();
+});
