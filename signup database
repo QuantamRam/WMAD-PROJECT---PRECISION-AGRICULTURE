@@ -1,0 +1,18 @@
+CREATE TABLE SignInData (
+    user_id INT PRIMARY KEY AUTO_INCREMENT,
+    username VARCHAR(50) NOT NULL,
+    password_hash VARCHAR(255) NOT NULL, -- Store hashed passwords for security
+    sign_in_time DATETIME DEFAULT CURRENT_TIMESTAMP,
+    last_sign_in DATETIME,
+    government_scheme_access BOOLEAN DEFAULT FALSE,
+    disaster_mgmt_access BOOLEAN DEFAULT FALSE
+);
+
+-- Sample query to insert sign-in data
+INSERT INTO SignInData (username, password_hash, government_scheme_access, disaster_mgmt_access)
+VALUES ('username1', 'hashed_password_here', TRUE, TRUE);
+
+-- Sample query to update sign-in time on login
+UPDATE SignInData
+SET last_sign_in = CURRENT_TIMESTAMP
+WHERE username = 'username1';
